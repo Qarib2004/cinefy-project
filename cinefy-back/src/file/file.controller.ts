@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common'
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express'
 import { CloudinaryService } from '../cloudinary/cloudinary.service'
+import { Express } from 'express'
 
 @Controller('files')
 export class FileController {
