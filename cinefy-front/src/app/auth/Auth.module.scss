@@ -1,0 +1,31 @@
+.wrapper {
+	@apply min-h-screen grid grid-cols-1 lg:grid-cols-2;
+
+    .left {
+        @apply h-full lg:flex flex-col items-center justify-center px-6 py-8 bg-violet-950;
+      
+        > .heading {
+          @apply text-3xl mb-6 text-white;
+        }
+      
+        .button {
+          @apply mt-4 px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition-colors w-48 text-center;
+        }
+      
+        .toggle {
+          @apply mt-3 text-gray-500 cursor-pointer;
+        }
+      }
+      
+
+	> .right {
+        @apply flex items-center justify-center bg-[#000000]; 
+        height: 100%; 
+        padding: 2rem;
+      
+        > img {
+          @apply max-w-full h-auto rounded-lg shadow-lg; 
+        }
+      }
+      
+}

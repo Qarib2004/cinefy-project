@@ -1,0 +1,33 @@
+@import '../../../assets/styles/variables';
+
+.slider {
+  @apply relative;
+
+  .slide {
+    @apply relative h-[35rem] overflow-hidden shadow-xl flex items-center;
+
+    // градиент для текста на фоне изображения
+    @include fade-bg-gradient();
+
+    .image {
+      @apply w-full h-full rounded-lg;
+      object-fit: contain; // не растягивает картинку, сохраняет пропорции
+    }
+
+    .content {
+      @apply relative z-20 px-14;
+
+      .title {
+        @apply text-white uppercase text-5xl font-semibold leading-[60px] mb-2;
+      }
+
+      .sub_title {
+        @apply text-neutral-300 font-medium uppercase mb-4;
+      }
+
+      .button {
+        @apply px-10;
+      }
+    }
+  }
+}
