@@ -29,6 +29,8 @@
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.1.6",
     "@prisma/client": "^6.13.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
     "argon2": "^0.43.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
@@ -68,7 +70,7 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.38.0"
   },
   "jest": {
     "moduleFileExtensions": [
