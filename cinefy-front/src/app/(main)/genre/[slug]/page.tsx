@@ -11,62 +11,60 @@ import { IPageSlugParam, TypeParamSlug } from '@/types/page-params.types'
 export const revalidate = 60
 
 export async function generateStaticParams() {
-	const genres = await genreService.getAll()
+  const genres = await genreService.getAll()
 
-	return genres.map(genre => ({
-		params: { slug: genre.slug }
-	}))
+  return genres.map(genre => ({
+    slug: genre.slug
+  }))
 }
 
 async function getMovies(params: TypeParamSlug) {
-	try {
-		const { data: genre } = await genreService.getBySlug(
-			params?.slug as string
-		)
+  try {
+    const { data: genre } = await genreService.getBySlug(params?.slug ?? '')
 
-		if (!genre) return redirect('/404')
+    if (!genre) return redirect('/404')
 
-		const { data: movies } = await movieService.getByGenres([genre.id])
+    const { data: movies } = await movieService.getByGenres([genre.id])
 
-		return { genre, movies: movies || [] } 
-	} catch (error) {
-		return redirect('/404')
-	}
+    return { genre, movies: movies || [] }
+  } catch (error) {
+    return redirect('/404')
+  }
 }
 
 export async function generateMetadata({
-	params
+  params
 }: IPageSlugParam): Promise<Metadata> {
-	const { genre, movies } = await getMovies(params)
+  const { genre, movies } = await getMovies(params)
 
-	return {
-		title: genre.name,
-		description: genre.description,
-		openGraph: {
-			images: movies[0] ? [{ url: movies[0].poster }] : [],
-			description: genre.description
-		}
-	}
+  return {
+    title: genre.name,
+    description: genre.description,
+    openGraph: {
+      images: movies[0] ? [{ url: movies[0].poster }] : [],
+      description: genre.description
+    }
+  }
 }
 
 export default async function GenrePage({ params }: IPageSlugParam) {
-	const { genre, movies } = await getMovies(params)
+  const { genre, movies } = await getMovies(params)
 
-	if (!movies || movies.length === 0) {
-		return (
-			<div className='px-6 py-10 text-center text-xl text-neutral-400'>
-				There are no films in this genre yet.
-			</div>
-		)
-	}
+  if (!movies || movies.length === 0) {
+    return (
+      <div className="px-6 py-10 text-center text-xl text-neutral-400">
+        There are no films in this genre yet.
+      </div>
+    )
+  }
 
-	return (
-		<div className='px-6'>
-			<Catalog
-				title={genre.name}
-				description={genre.description}
-				movies={movies}
-			/>
-		</div>
-	)
+  return (
+    <div className="px-6">
+      <Catalog
+        title={genre.name}
+        description={genre.description}
+        movies={movies}
+      />
+    </div>
+  )
 }
