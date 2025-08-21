@@ -20,14 +20,14 @@ export async function generateStaticParams() {
 
 async function getMovies(params: TypeParamSlug) {
   try {
-    const { data: genre } = await genreService.getBySlug(params?.slug ?? '')
+    const { data: genre } = await genreService.getBySlug(params.slug ?? '')
 
     if (!genre) return redirect('/404')
 
     const { data: movies } = await movieService.getByGenres([genre.id])
 
     return { genre, movies: movies || [] }
-  } catch (error) {
+  } catch {
     return redirect('/404')
   }
 }
