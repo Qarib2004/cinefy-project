@@ -10,8 +10,8 @@ import {
 	UsePipes,
 	ValidationPipe
 } from '@nestjs/common'
-import { Auth } from 'src/auth/decorators/auth.decorator'
-import { CurrentUser } from 'src/user/decorators/user.decorator'
+import { Auth } from '../auth/decorators/auth.decorator'
+import { CurrentUser } from '../user/decorators/user.decorator'
 import { CreateReviewDto } from './dto/create-review.dto'
 import { ReviewService } from './review.service'
 

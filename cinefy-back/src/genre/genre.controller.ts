@@ -14,7 +14,7 @@ import {
 } from '@nestjs/common'
 import { GenreService } from './genre.service'
 import { UpdateGenreDto } from './dto/update-genre.dto'
-import { Auth } from 'src/auth/decorators/auth.decorator'
+import { Auth } from '../auth/decorators/auth.decorator'
 
 @Controller('genres')
 export class GenreController {

@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
-import { returnActorObject } from 'src/actor/return-actor.object'
-import { returnGenreObject } from 'src/genre/return-genre.object'
-import { returnReviewObject } from 'src/review/return-review.object'
+import { returnActorObject } from '../actor/return-actor.object'
+import { returnGenreObject } from '../genre/return-genre.object'
+import { returnReviewObject } from '../review/return-review.object'
 
 export const returnMovieObject: Prisma.MovieSelect = {
 	id: true,

@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
-import { PrismaService } from 'src/prisma.service'
+import { PrismaService } from '../prisma.service'
 import { returnActorObject } from './return-actor.object'
 import { UpdateActorDto } from './dto/update-actor.dto'
-import { generateSlug } from 'src/utils/generate-slug'
+import { generateSlug } from '../utils/generate-slug'
 
 @Injectable()
 export class ActorService {
