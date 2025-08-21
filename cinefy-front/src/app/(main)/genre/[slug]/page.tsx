@@ -1,12 +1,16 @@
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-
 import Catalog from '@/components/ui/catalog-movies/Catalog'
-
 import { genreService } from '@/services/genre.service'
 import { movieService } from '@/services/movie.service'
 
-import { IPageSlugParam, TypeParamSlug } from '@/types/page-params.types'
+type TypeParamSlug = {
+  slug: string
+}
+
+type PageProps = {
+  params: TypeParamSlug
+}
 
 export const revalidate = 60
 
@@ -20,7 +24,7 @@ export async function generateStaticParams() {
 
 async function getMovies(params: TypeParamSlug) {
   try {
-    const { data: genre } = await genreService.getBySlug(params.slug ?? '')
+    const { data: genre } = await genreService.getBySlug(params.slug)
 
     if (!genre) return redirect('/404')
 
@@ -32,9 +36,7 @@ async function getMovies(params: TypeParamSlug) {
   }
 }
 
-export async function generateMetadata({
-  params
-}: IPageSlugParam): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { genre, movies } = await getMovies(params)
 
   return {
@@ -47,7 +49,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function GenrePage({ params }: IPageSlugParam) {
+export default async function GenrePage({ params }: PageProps) {
   const { genre, movies } = await getMovies(params)
 
   if (!movies || movies.length === 0) {
