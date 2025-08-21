@@ -4,7 +4,7 @@ import {
 	NotFoundException,
 	UnauthorizedException
 } from '@nestjs/common'
-import { UserService } from 'src/user/user.service'
+import { UserService } from '../user/user.service'
 import { AuthDto } from './dto/auth.dto'
 import { JwtService } from '@nestjs/jwt'
 import { verify } from 'argon2'
