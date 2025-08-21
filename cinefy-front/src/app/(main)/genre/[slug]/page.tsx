@@ -8,37 +8,29 @@ type TypeParamSlug = {
   slug: string
 }
 
-type PageProps = {
-  params: TypeParamSlug
-}
-
 export const revalidate = 60
 
 export async function generateStaticParams() {
   const genres = await genreService.getAll()
-
-  return genres.map(genre => ({
-    slug: genre.slug
-  }))
+  return genres.map(genre => ({ slug: genre.slug }))
 }
 
-async function getMovies(params: TypeParamSlug) {
+async function getMovies(slug: string) {
   try {
-    const { data: genre } = await genreService.getBySlug(params.slug)
-
+    const { data: genre } = await genreService.getBySlug(slug)
     if (!genre) return redirect('/404')
 
     const { data: movies } = await movieService.getByGenres([genre.id])
-
     return { genre, movies: movies || [] }
   } catch {
     return redirect('/404')
   }
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { genre, movies } = await getMovies(params)
-
+export async function generateMetadata({
+  params
+}: { params: TypeParamSlug }): Promise<Metadata> {
+  const { genre, movies } = await getMovies(params.slug)
   return {
     title: genre.name,
     description: genre.description,
@@ -49,8 +41,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default async function GenrePage({ params }: PageProps) {
-  const { genre, movies } = await getMovies(params)
+export default async function GenrePage({
+  params
+}: { params: TypeParamSlug }) {
+  const { genre, movies } = await getMovies(params.slug)
 
   if (!movies || movies.length === 0) {
     return (
