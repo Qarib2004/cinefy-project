@@ -1,5 +1,4 @@
-@import '../../../assets/styles/variables';
-
+@use '../../../assets/styles/variables' as *;
 .banner {
 	@apply relative overflow-hidden w-full h-80 shadow-lg flex flex-col justify-end;
 

@@ -53,8 +53,9 @@ export async function generateMetadata({
 	}
 }
 
-export default async function ActorPage({ params }: IPageSlugParam) {
-	const { actor, movies } = await getMovies(params)
+export default async function ActorPage({ params }: { params: Promise<{ slug: string }> }) {
+	const {slug} = await  params
+	const { actor, movies } = await getMovies({slug})
 
 	return (
 		<div className='px-6'>
