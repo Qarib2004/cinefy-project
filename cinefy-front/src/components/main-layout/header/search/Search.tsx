@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import SearchField from '@/components/ui/search-field/SearchField'
 
-import styles from './Search.module.scss'
+import styles from './search.module.scss'
 import SearchList from './search-list/SearchList'
 import { useSearch } from './useSearch'
 

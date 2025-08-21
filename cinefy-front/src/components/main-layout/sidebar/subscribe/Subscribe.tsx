@@ -10,7 +10,7 @@ import { ADMIN_URL, PUBLIC_URL } from '@/config/url.config'
 
 import { useProfile } from '@/hooks/useProfile'
 
-import styles from './Subscribe.module.scss'
+import styles from './subscribe.module.scss'
 
 const Subscribe: FC = () => {
 	const { user } = useProfile()
