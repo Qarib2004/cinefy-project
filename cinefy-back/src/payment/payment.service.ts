@@ -1,5 +1,5 @@
 import { ConflictException, Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma.service'
 import { UserService } from 'src/user/user.service';
 import { PaymentStatus } from '@prisma/client';
 import { PaymentDto } from './dto/payment.dto';

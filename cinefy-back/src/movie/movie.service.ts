@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
-import { PrismaService } from 'src/prisma.service'
+import { PrismaService } from '../prisma.service'
 import { generateSlug } from 'src/utils/generate-slug'
 import { UpdateMovieDto } from './dto/update-movie.dto'
 import { returnMovieObject } from './return-movie.object'
