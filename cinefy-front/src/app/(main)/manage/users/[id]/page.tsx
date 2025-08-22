@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 	...NO_INDEX_PAGE
 }
 
-export default function UserEditPage({ params }: IPageIdParam) {
-	return <UserEdit userId={params.id} />
+export default async function UserEditPage({ params }: IPageIdParam) {
+	const resolvedParams = await params
+	return <UserEdit userId={resolvedParams.id} />
 }

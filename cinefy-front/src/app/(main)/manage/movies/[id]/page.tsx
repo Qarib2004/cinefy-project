@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 	...NO_INDEX_PAGE
 }
 
-export default function MovieEditPage({ params }: IPageIdParam) {
-	return <MovieEdit movieId={params.id} />
+export default async function MovieEditPage({ params }: IPageIdParam) {
+	const resolvedParams = await params
+	return <MovieEdit movieId={resolvedParams.id} />
 }

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 	...NO_INDEX_PAGE
 }
 
-export default function GenreEditPage({ params }: IPageIdParam) {
-	return <GenreEdit genreId={params.id} />
+export default async function GenreEditPage({ params }: IPageIdParam) {
+	const resolvedParams = await params
+	return <GenreEdit genreId={resolvedParams.id} />
 }
