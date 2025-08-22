@@ -3,10 +3,7 @@ import { redirect } from 'next/navigation'
 import Catalog from '@/components/ui/catalog-movies/Catalog'
 import { genreService } from '@/services/genre.service'
 import { movieService } from '@/services/movie.service'
-
-type TypeParamSlug = {
-  slug: string
-}
+import { TypeParamSlug } from '@/types/page-params.types'
 
 export const revalidate = 60
 

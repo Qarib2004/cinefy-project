@@ -1,6 +1,7 @@
 export type TypeParamSlug = {
-	slug?: string
-}
+	slug: string
+  }
+  
 
 export interface IPageSlugParam {
 	params: TypeParamSlug
