@@ -16,7 +16,7 @@ const Sidebar: FC = () => {
   return (
     <>
        <button
-        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-gray-200 rounded"
+        className="md:hidden fixed top-4 left-4 z-[1000] p-2 bg-gray-200 rounded"
         onClick={toggleSidebar}
       >
         {isOpen ? 'Close' : 'Menu'}
