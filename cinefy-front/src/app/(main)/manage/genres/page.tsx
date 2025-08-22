@@ -7,7 +7,7 @@ import Genres from "./Genre";
 
 
 
-export const metadada:Metadata = {
+export const metadata:Metadata = {
     title:'Genre',
     ...NO_INDEX_PAGE
 }
