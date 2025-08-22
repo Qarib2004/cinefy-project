@@ -26,8 +26,9 @@ async function getMovies(slug: string) {
 
 export async function generateMetadata({
   params
-}: { params: TypeParamSlug }): Promise<Metadata> {
-  const { genre, movies } = await getMovies(params.slug)
+}: { params: Promise<TypeParamSlug> }): Promise<Metadata> {
+  const resolvedParams = await params
+  const { genre, movies } = await getMovies(resolvedParams.slug)
   return {
     title: genre.name,
     description: genre.description,
@@ -40,8 +41,9 @@ export async function generateMetadata({
 
 export default async function GenrePage({
   params
-}: { params: TypeParamSlug }) {
-  const { genre, movies } = await getMovies(params.slug)
+}: { params: Promise<TypeParamSlug> }) {
+  const resolvedParams = await params
+  const { genre, movies } = await getMovies(resolvedParams.slug)
 
   if (!movies || movies.length === 0) {
     return (
