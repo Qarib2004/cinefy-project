@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-
 import { IPageIdParam } from '@/types/page-params.types'
 
 import ActorEdit from './ActorEdit'
@@ -11,6 +10,7 @@ export const metadata: Metadata = {
 	...NO_INDEX_PAGE
 }
 
-export default function ActorEditPage({ params }: IPageIdParam) {
-	return <ActorEdit actorId={params.id} />
+export default async function ActorEditPage({ params }: IPageIdParam) {
+	const resolvedParams = await params
+	return <ActorEdit actorId={resolvedParams.id} />
 }
