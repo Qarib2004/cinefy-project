@@ -7,28 +7,32 @@ import MenuContainer from './navigation/MenuContainer'
 import Subscribe from './subscribe/Subscribe'
 
 const Sidebar: FC = () => {
-  const [isOpen, setIsOpen] = useState(false) 
+  const [isOpen, setIsOpen] = useState(false)
 
-  const toggleSidebar = () => {
-    setIsOpen(prev => !prev)
-  }
+  const toggleSidebar = () => setIsOpen(prev => !prev)
 
   return (
     <>
-       <button
-        className="md:hidden fixed top-4 left-4 z-[1000] p-2 bg-gray-200 rounded"
+      <button
+        className="md:hidden fixed top-4 left-4 z-[1000] p-3 bg-blue-600 text-white rounded shadow-lg"
         onClick={toggleSidebar}
       >
         {isOpen ? 'Close' : 'Menu'}
       </button>
 
-      <div className={`${styles.wrapper} ${isOpen ? styles.open : ''}`}>
+      <div className={`${styles.wrapper} ${isOpen ? 'open' : ''}`}>
         <div className={styles.sidebar}>
           <Logo />
           <MenuContainer />
           <Subscribe />
         </div>
-        {isOpen && <div   className="fixed inset-0 bg-black/30 z-40 md:hidden" onClick={toggleSidebar} />}
+
+        {isOpen && (
+          <div
+            className="fixed inset-0 bg-black/30 z-[998] md:hidden"
+            onClick={toggleSidebar}
+          />
+        )}
       </div>
     </>
   )
