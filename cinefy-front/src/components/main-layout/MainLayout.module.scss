@@ -1,18 +1,25 @@
-/* MainLayout.module.scss */
-
 .layout {
 	@apply flex flex-col h-full;
-  
+
 	main {
-	  /* На мобильных устройствах отступа слева нет */
-	  @apply pt-[80px];
-	  
-	  /* На десктопе добавляем отступ слева только если сайдбар зафиксирован */
-	  @media (min-width: 769px) {
-		@apply pl-72; /* 288px отступ для фиксированного сайдбара */
-	  }
+		@apply pt-[80px] transition-all duration-300;
+		// Убираем фиксированный padding-left
+		
+		// На десктопе добавляем отступ только когда сайдбар открыт
+		@screen md {
+			padding-left: 0;
+		}
 	}
-  }
+
+	// Когда сайдбар открыт на десктопе
+	&.sidebarOpen {
+		@screen md {
+			main {
+				@apply pl-72;
+			}
+		}
+	}
+}
 
 // .layout {
 // 	@apply flex flex-col h-full;
