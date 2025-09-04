@@ -1,7 +1,23 @@
+/* MainLayout.module.scss */
+
 .layout {
 	@apply flex flex-col h-full;
-
+  
 	main {
-		@apply pl-72 pt-[80px];
+	  /* На мобильных устройствах отступа слева нет */
+	  @apply pt-[80px];
+	  
+	  /* На десктопе добавляем отступ слева только если сайдбар зафиксирован */
+	  @media (min-width: 769px) {
+		@apply pl-72; /* 288px отступ для фиксированного сайдбара */
+	  }
 	}
-}
+  }
+
+// .layout {
+// 	@apply flex flex-col h-full;
+
+// 	main {
+// 		@apply pl-72 pt-[80px];
+// 	}
+// }
