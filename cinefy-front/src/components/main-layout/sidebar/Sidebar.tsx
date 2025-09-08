@@ -13,12 +13,12 @@ const Sidebar: FC = () => {
 
   return (
     <>
-      <button
+      {/* <button
         className="md:hidden fixed top-4 left-4 z-[1000] p-3 bg-blue-600 text-white rounded shadow-lg"
         onClick={toggleSidebar}
       >
         {isOpen ? 'Close' : 'Menu'}
-      </button>
+      </button> */}
 
       <div className={`${styles.wrapper} ${isOpen ? 'open' : ''}`}>
         <div className={styles.sidebar}>
